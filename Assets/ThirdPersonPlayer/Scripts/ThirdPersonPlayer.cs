@@ -17,6 +17,8 @@ public class ThirdPersonPlayer : MonoBehaviour
     private float turnSmoothVelocity;
     Vector3 moveDirection;
 
+    bool usingJetpack;
+
 
     void Start()
     {
@@ -39,7 +41,8 @@ public class ThirdPersonPlayer : MonoBehaviour
         }
         else
         {
-            vertVel.y -= gravity * Time.deltaTime;
+            if(!usingJetpack)
+                vertVel.y -= gravity * Time.deltaTime;
         }
 
         controller.Move(vertVel * Time.deltaTime);
@@ -90,6 +93,17 @@ public class ThirdPersonPlayer : MonoBehaviour
     {
         Ray ray = new Ray(new Vector3(controller.bounds.center.x, (controller.bounds.center.y - controller.bounds.extents.y), controller.bounds.center.z), Vector3.down);
         return (Physics.Raycast(ray, 0.3f));
+    }
+
+    public void Flying()
+    {
+        /*while (Input.GetKey(KeyCode.L))
+        {
+            usingJetpack = true;
+            vertVel.y = jumpForce;
+        }*/
+
+        usingJetpack = false;
     }
 
     void InitialiseCamera()
