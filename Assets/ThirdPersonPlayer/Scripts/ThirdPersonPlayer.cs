@@ -17,6 +17,8 @@ public class ThirdPersonPlayer : MonoBehaviour
     private float turnSmoothVelocity;
     Vector3 moveDirection;
 
+    public bool usingJetpack;
+
 
     void Start()
     {
@@ -31,6 +33,11 @@ public class ThirdPersonPlayer : MonoBehaviour
 
     void Movement()
     {
+        if (usingJetpack)
+        {
+            vertVel.y = jumpForce;
+        }
+
         //Calculate vertical movement first
         if (IsGrounded())
         {
@@ -39,7 +46,8 @@ public class ThirdPersonPlayer : MonoBehaviour
         }
         else
         {
-            vertVel.y -= gravity * Time.deltaTime;
+            if(!usingJetpack)
+                vertVel.y -= gravity * Time.deltaTime;
         }
 
         controller.Move(vertVel * Time.deltaTime);

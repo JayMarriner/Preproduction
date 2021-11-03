@@ -48,6 +48,7 @@ MonoBehaviour:
   - {fileID: 5241976216272901199, guid: 3cccf993e738e594eb08d67ad72cc102, type: 3}
   - {fileID: 8508615309270511701, guid: a546ecca5c9f3024fa1e9f245f983bf3, type: 3}
   - {fileID: 750785707522913287, guid: b7df55c800a435c44b1abab3a8027eab, type: 3}
+  - {fileID: 3305209287653857603, guid: 04a1854b70723e743823b27940f691bd, type: 3}
 --- !u!1 &803723902412830798
 GameObject:
   m_ObjectHideFlags: 0
@@ -314,6 +315,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraRig: {fileID: 6470471897111753833, guid: e681f5d928f706741a9659ea63f2b353,
     type: 3}
+  usingJetpack: 0
 --- !u!143 &803723904428649998
 CharacterController:
   m_ObjectHideFlags: 0
