@@ -17,9 +17,15 @@ public class JetpackHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.L))
+        if (Input.GetKey(KeyCode.Space) && fuel > 0f)
         {
-            player.Flying();
+            player.usingJetpack = true;
+            fuel -= Time.deltaTime;
+        }
+
+        if (Input.GetKeyUp(KeyCode.Space) || fuel <= 0f)
+        {
+            player.usingJetpack = false;
         }
     }
 }
