@@ -16,19 +16,22 @@ public class ThirdPersonPlayer : MonoBehaviour
     private float rotationSmooth = 0.1f;
     private float turnSmoothVelocity;
     Vector3 moveDirection;
+    GameManager gm;
 
     public bool usingJetpack;
 
 
     void Start()
     {
+        gm = GameObject.FindGameObjectWithTag("Manager").GetComponent<GameManager>();
         controller = GetComponent<CharacterController>();
         InitialiseCamera();
     }
 
     void Update()
     {
-        Movement();
+        if(gm.currentState == GameManager.GameState.Play)
+            Movement();
     }
 
     void Movement()
