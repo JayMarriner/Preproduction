@@ -15,7 +15,7 @@ public class CurrentItem : MonoBehaviour
     {
         arrayPos = 0;
         maxPos = weaponImages.Length;
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<ThirdPersonPlayer>();
+        //player = GameObject.FindGameObjectWithTag("Player").GetComponent<ThirdPersonPlayer>();
     }
 
     // Update is called once per frame

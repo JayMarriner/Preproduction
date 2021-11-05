@@ -71,6 +71,6 @@ public class Arrow : MonoBehaviour
         }
 
         //Get rid of the trail.
-        trail.Clear();
+        //trail.Clear();
     }
 }

@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb66290259d09c04e84800f6a1e02df9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentState: 0
 --- !u!114 &7852067162881924387
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -58,7 +59,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponImages:
   - {fileID: 21300000, guid: 97456a6c45dc22e4b9202130eeb809ca, type: 3}
-  - {fileID: 21300000, guid: b0b6395b12d961945ab23592b3c458e2, type: 3}
   - {fileID: 21300000, guid: b0b6395b12d961945ab23592b3c458e2, type: 3}
   - {fileID: 21300000, guid: b0b6395b12d961945ab23592b3c458e2, type: 3}
   - {fileID: 21300000, guid: b0b6395b12d961945ab23592b3c458e2, type: 3}

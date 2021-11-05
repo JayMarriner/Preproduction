@@ -64,7 +64,7 @@ public class ThirdPersonPlayer : MonoBehaviour
         if (direction.magnitude >= 0.1f)
         {
             //Determine rotation angle
-            float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
+            float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + Camera.main.transform.eulerAngles.y;
 
             //Smooth between current and target angle
             float smoothAngle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, rotationSmooth);

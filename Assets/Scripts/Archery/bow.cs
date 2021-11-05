@@ -91,7 +91,7 @@ public class bow : MonoBehaviour
                 trail.endWidth = 0f; trail.startWidth = 0.2f; trail.startColor = Color.blue; trail.endColor = Color.red; trail.time = 0.25f;
                 
                 //Set the rigidbody parameters (force to go forward and gravity for drop off). Set the gravity to false if drop off not wanted.
-                arrowRb.AddForce(transform.forward * 250 * powerAmt);
+                arrowRb.AddForce(transform.forward * 400 * powerAmt);
                 arrowRb.useGravity = true;
 
                 //Run the fired code on the arrow.
