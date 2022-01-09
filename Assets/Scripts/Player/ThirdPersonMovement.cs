@@ -1,11 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class ThirdPersonMovement : MonoBehaviour
 {
     [SerializeField] Transform cam;
     [SerializeField] float speed = 6f;
+    [SerializeField] CinemachineFreeLook cameraClose;
+    [SerializeField] GameObject Inventory;
     CharacterController controller;
     float turnSmoothTime = 0.1f;
     float turnSmoothVelocity;
@@ -42,9 +45,16 @@ public class ThirdPersonMovement : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Mouse1))
         {
+            //cameraClose.transform.rotation = cam.rotation;
+            //cameraClose.transform.position = cam.position;
+            cameraClose.Priority = 2;
             targetAngle = cam.eulerAngles.y;
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
+        }
+        else
+        {
+            cameraClose.Priority = 1;
         }
 
         if(direction.magnitude >= 0.1f)
@@ -53,7 +63,6 @@ public class ThirdPersonMovement : MonoBehaviour
             {
                 moveDir = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
                 moveDir = Camera.main.transform.TransformDirection(direction);
-                moveDir *= speed;
                 controller.Move(moveDir * Time.deltaTime);
             }
             else 
