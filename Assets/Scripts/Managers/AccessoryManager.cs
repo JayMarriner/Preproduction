@@ -20,6 +20,8 @@ public class AccessoryManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Weapons.Length-1 < currentItem.arrayPos)
+            currentItem.arrayPos = 0;
         if (switchCheck != currentItem.arrayPos)
             UpdateItem();
     }
