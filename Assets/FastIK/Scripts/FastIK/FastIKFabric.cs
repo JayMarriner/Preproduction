@@ -1,4 +1,4 @@
-﻿#if UNITY_EDITOR
+﻿/*#if UNITY_EDITOR
 using UnityEditor;
 #endif
 using UnityEngine;
@@ -247,4 +247,4 @@ namespace DitzelGames.FastIK
 #endif
 
     }
-}
+}*/

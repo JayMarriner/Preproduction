@@ -8,6 +8,7 @@ public class AccessoryManager : MonoBehaviour
     [SerializeField] GameObject[] Weapons;
     int switchCheck;
     GameObject currentObj;
+    ThirdPersonPlayer player;
 
     // Start is called before the first frame update
     void Start()
@@ -30,7 +31,8 @@ public class AccessoryManager : MonoBehaviour
     {
         Destroy(currentObj);
         switchCheck = currentItem.arrayPos;
-        print(switchCheck);
         currentObj = Instantiate(Weapons[switchCheck], gameObject.transform);
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<ThirdPersonPlayer>();
+        player.itemSwitched = true;
     }
 }

@@ -17,8 +17,10 @@ public class ThirdPersonPlayer : MonoBehaviour
     private float turnSmoothVelocity;
     Vector3 moveDirection;
     public bool onGround;
-
+    public bool canDoubleJump;
+    public bool itemSwitched;
     public bool usingJetpack;
+    public bool alreadyDoubleJump;
 
 
     void Start()
@@ -34,6 +36,13 @@ public class ThirdPersonPlayer : MonoBehaviour
 
     void Movement()
     {
+        if (itemSwitched)
+        {
+            usingJetpack = false;
+            canDoubleJump = false;
+            itemSwitched = false;
+        }
+
         if (usingJetpack)
         {
             vertVel.y = jumpForce/1.5f;
@@ -45,9 +54,19 @@ public class ThirdPersonPlayer : MonoBehaviour
             onGround = true;
             if (Input.GetKeyDown(KeyCode.Space))
                 vertVel.y = jumpForce;
+            if (alreadyDoubleJump)
+                alreadyDoubleJump = false;
         }
         else
         {
+            if(canDoubleJump && !alreadyDoubleJump)
+            {
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    vertVel.y = jumpForce;
+                    alreadyDoubleJump = true;
+                }
+            }
             onGround = false;
             if(!usingJetpack)
                 vertVel.y -= gravity * Time.deltaTime;
