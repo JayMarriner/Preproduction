@@ -5,6 +5,9 @@ using UnityEngine;
 public class DoorHandler : MonoBehaviour
 {
     [SerializeField] bool doorClose;
+    [SerializeField] bool plusXaxis;
+    [SerializeField] bool minusXaxis;
+    [SerializeField] float closeTime = 3f;
 
     float yAmt;
     float scaleMultiplier;
@@ -27,25 +30,57 @@ public class DoorHandler : MonoBehaviour
 
         while(yAmt < 1)
         {
-            //Door goes down on Y axis by set amount * the scale.
-            gameObject.transform.position -= new Vector3(0, 0.01f * scaleMultiplier, 0);
-            yAmt += 0.01f;
-            yield return new WaitForSeconds(0.01f / scaleMultiplier);
+            if (plusXaxis)
+            {
+                //Door goes down on Y axis by set amount * the scale.
+                gameObject.transform.position -= new Vector3(0.01f * scaleMultiplier, 0, 0);
+                yAmt += 0.01f;
+                yield return new WaitForSeconds(0.01f / scaleMultiplier);
+            }
+            else if (minusXaxis)
+            {
+                //Door goes down on Y axis by set amount * the scale.
+                gameObject.transform.position += new Vector3(0.01f * scaleMultiplier, 0, 0);
+                yAmt += 0.01f;
+                yield return new WaitForSeconds(0.01f / scaleMultiplier);
+            }
+            else
+            {
+                //Door goes down on Y axis by set amount * the scale.
+                gameObject.transform.position -= new Vector3(0, 0.01f * scaleMultiplier, 0);
+                yAmt += 0.01f;
+                yield return new WaitForSeconds(0.01f / scaleMultiplier);
+            }
         }
 
         yAmt = 0;
 
-        //If this door is supposed to automatically close then it will wait 3 seconds, then begin closing.
+        //If this door is supposed to automatically close then it will wait x seconds, then begin closing.
         if (doorClose)
         {
-            yield return new WaitForSeconds(3f);
+            yield return new WaitForSeconds(closeTime);
 
             while (yAmt < 1)
             {
-                //Goes up on Y axis by set amount * the scale.
-                gameObject.transform.position += new Vector3(0, 0.01f * scaleMultiplier, 0);
-                yAmt += 0.01f;
-                yield return new WaitForSeconds(0.01f / scaleMultiplier);
+                if (plusXaxis)
+                {
+                    gameObject.transform.position += new Vector3(0.01f * scaleMultiplier, 0, 0);
+                    yAmt += 0.01f;
+                    yield return new WaitForSeconds(0.01f / scaleMultiplier);
+                }
+                else if (minusXaxis)
+                {
+                    gameObject.transform.position -= new Vector3(0.01f * scaleMultiplier, 0, 0);
+                    yAmt += 0.01f;
+                    yield return new WaitForSeconds(0.01f / scaleMultiplier);
+                }
+                else
+                {
+                    //Goes up on Y axis by set amount * the scale.
+                    gameObject.transform.position += new Vector3(0, 0.01f * scaleMultiplier, 0);
+                    yAmt += 0.01f;
+                    yield return new WaitForSeconds(0.01f / scaleMultiplier);
+                }
             }
 
             yAmt = 0;
